@@ -1,0 +1,22 @@
+{
+  "name": "playwright_framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tests": "npx playwright test frameworkCRM.spec.ts --project chromium --headed --workers 1",
+    "allure-report": "allure generate ./allure-results -o ./allure-report && allure open ./allure-report",
+    "test-allure": "npm run tests && npm run allure-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@faker-js/faker": "^10.5.0",
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.1.0",
+    "allure": "^3.14.1",
+    "allure-playwright": "^3.10.2"
+  }
+}
