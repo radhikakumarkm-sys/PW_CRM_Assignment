@@ -1,4 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
+import path from 'node:path';
 
 /**
  * Read environment variables from file.
@@ -10,8 +12,14 @@ import { defineConfig, devices } from '@playwright/test';
 
 /**
  * See https://playwright.dev/docs/test-configuration.
+ * 
  */
+
+dotenv.config({ path: path.resolve(__dirname, "qa.env") });
+
 export default defineConfig({
+
+
   // 1. Timeout for an individual test block (Default is 30000ms / 30 seconds)
   timeout: 15 * 1000,
   // testDir: './tests',

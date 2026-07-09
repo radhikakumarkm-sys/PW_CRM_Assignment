@@ -5,8 +5,6 @@ import { AddNewContactPage } from "../pages/AddNewContactPage";
 import { ContactsLeadsPage } from "../pages/ContactsLeadsPage";
 
 
-
-
 // Declare the types of your fixtures.
 type MyFixtures = {
     loginPage: DashboardOverviewPage;
@@ -22,14 +20,14 @@ export const test = base.extend<MyFixtures>({
 
         // Navigate to https://apps.theauto-mate.com/crm/login.php
 
-        await page.goto("https://apps.theauto-mate.com/crm/login.php");
+        await page.goto(process.env.CRM_URL as string);
 
         // Login using test.automate / test@123
         // Verify Dashboard overview page is displayed using its title - /Dashboard/
 
         const loginPage = new LoginPage(page, context);
-        await loginPage.enterUsername("test.automate");
-        await loginPage.enterPassword("test@123");
+        await loginPage.enterUsername(process.env.CRM_USERNAME as string);
+        await loginPage.enterPassword(process.env.CRM_PASSWORD as string);
         const dashboardOverviewPage = await loginPage.clickSignIn(page);
 
         await use(dashboardOverviewPage);
