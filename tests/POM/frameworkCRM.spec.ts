@@ -1,6 +1,7 @@
 import { test } from "../../Custom Fixtures/customFixCRM"
 import { LoginPage } from "../../pages/LoginPage";
 import { faker } from '@faker-js/faker';
+import { FakerData } from "../../utils/FakerUtils"
 
 test(" Create & Edit Lead - CRM1", async ({ page, dashboardPage, contactsLeadsPage }) => {
 
@@ -10,12 +11,10 @@ test(" Create & Edit Lead - CRM1", async ({ page, dashboardPage, contactsLeadsPa
 
     // Fill all the required details - Name, Email, Phone Number etc.,
 
-    const company = faker.company.name();
-
     await contactsLeadsPage.fillContactName("Radhika");
-    await contactsLeadsPage.fillEmail("radhika@gmail.com");
+    await contactsLeadsPage.fillEmail(FakerData.getEmail());         //Get input from FakerData
     await contactsLeadsPage.fillPhone("9090909090");
-    await contactsLeadsPage.fillCompany(company);
+    await contactsLeadsPage.fillCompany(FakerData.getCompany());     //Get input from FakerData
     await contactsLeadsPage.checkFemaleRadio();
 
     // selectStatusDropDownS
